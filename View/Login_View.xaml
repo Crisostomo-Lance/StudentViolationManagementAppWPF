@@ -4,8 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModel="clr-namespace:StudentViolationApplication.ViewModel"
-        xmlns:local="clr-namespace:StudentViolationApplication.View" xmlns:customcontrols="clr-namespace:StudentViolationApplication.CustomControls"
+        xmlns:local="clr-namespace:StudentViolationApplication.View" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:customcontrols="clr-namespace:StudentViolationApplication.CustomControls"
         mc:Ignorable="d"
+        
         Title="Login_View" Height="720" Width="1200"
         WindowStyle="None"
         ResizeMode="NoResize"
@@ -78,12 +81,12 @@
         </Style>
     </Window.Resources>
 
-    
+
     <Window.Visibility>
         <Binding Path="IsViewVisible" Mode="TwoWay" Converter="{StaticResource BoolToVisibility}"/>
     </Window.Visibility>
 
-    
+
     <Border CornerRadius="10"
             Background="White"
             BorderBrush="Black"
@@ -98,10 +101,10 @@
 
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="25"/>
-                    <ColumnDefinition Width="25"/>
-                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="20"/>
                     <ColumnDefinition Width="2"/>
                 </Grid.ColumnDefinitions>
                 <!--#region Control Buttons -->
@@ -110,12 +113,15 @@
                         Grid.Column="1"
                         Click="btnMinimize_Click">
                     <Button.Content>
-                        <Image Source="/Images/minus.png" Stretch="Uniform" Cursor="Hand" HorizontalAlignment="Center" Width="16" Height="16"/>
+                        <materialDesign:PackIcon Kind="WindowMinimize" 
+                                                 HorizontalAlignment="Center"
+                                                 VerticalAlignment="Center"/>
                     </Button.Content>
 
                     <Button.Style>
                         <Style  TargetType="Button">
                             <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Cursor" Value="Hand"/>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Background" Value="#FFC6C6C6"/>
@@ -125,8 +131,7 @@
                     </Button.Style>
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border 
-                    Background="{TemplateBinding Background}">
+                            <Border Background="{TemplateBinding Background}">
                                 <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>
@@ -138,12 +143,15 @@
                         Click="btnMaximize_Click"
                         Visibility="Visible">
                     <Button.Content>
-                        <Image Source="/Images/square.png" Cursor="Hand" HorizontalAlignment="Center" Width="16" Height="16"/>
+                        <materialDesign:PackIcon Kind="WindowMaximize" 
+                                                 HorizontalAlignment="Center"
+                                                 VerticalAlignment="Center"/>
                     </Button.Content>
 
                     <Button.Style>
                         <Style  TargetType="Button">
                             <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Cursor" Value="Hand"/>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Background" Value="#FFC6C6C6"/>
@@ -160,18 +168,23 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <!--Noraml button-->
+                <!--Normal button-->
                 <Button x:Name="btnNormal"
                         Grid.Column="2"
                         Click ="btnNormal_Click"
                         Visibility="Collapsed">
                     <Button.Content>
-                        <Image Source="/Images/layers.png" Stretch="Uniform"  Cursor="Hand" HorizontalAlignment="Center" Width="16" Height="16"/>
+                        <materialDesign:PackIcon Kind="WindowRestore" 
+                                                 Width="16" 
+                                                 Height="16"
+                                                 HorizontalAlignment="Center"
+                                                 VerticalAlignment="Center"/>
                     </Button.Content>
 
                     <Button.Style>
                         <Style  TargetType="Button">
                             <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Cursor" Value="Hand"/>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Background" Value="#FFC6C6C6"/>
@@ -182,7 +195,7 @@
 
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border  Background="{TemplateBinding Background}">
+                            <Border Background="{TemplateBinding Background}">
                                 <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>
@@ -194,15 +207,18 @@
                         Click="btnExit_Click">
 
                     <Button.Content>
-                        <Image Source="/Images/close.png" Stretch="Uniform" HorizontalAlignment="Center" Width="16" Height="16"/>
+                        <materialDesign:PackIcon Kind="Close" 
+                                                 HorizontalAlignment="Center"
+                                                 VerticalAlignment="Center"/>
                     </Button.Content>
 
                     <Button.Style>
                         <Style  TargetType="Button">
                             <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Cursor" Value="Hand"/>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#FFC6C6C6"/>
+                                    <Setter Property="Background" Value="#FFE81123"/>
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
@@ -210,7 +226,7 @@
 
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
-                            <Border  Background="{TemplateBinding Background}" Margin="0,0,9,0">
+                            <Border Background="{TemplateBinding Background}" Margin="0,0,9,0">
                                 <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>
@@ -221,7 +237,7 @@
             </Grid>
 
 
-            <!--#region Non-essentioal -->
+            <!--#region Non-essential -->
             <StackPanel Grid.Row="1"
                         Width="380"
                         Margin="0,20,0,0">
@@ -320,6 +336,7 @@
                                           >
 
                                     <ComboBox.ItemContainerStyle>
+                                        
                                         <Style TargetType="ComboBoxItem">
                                             <Style.Triggers>
                                                 <Trigger Property="IsMouseOver" Value="True">
@@ -397,7 +414,7 @@
                                              FontFamily="Segoe UI"
                                              Background="Transparent"
                                              BorderThickness="0" 
-                                             Margin="5"
+                                             Padding="5"
                                              VerticalAlignment="Center"/>
                                 </Border>
 
@@ -411,13 +428,13 @@
                                     <customcontrols:BindablePasswordBox Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                                                         Height="auto"
                                                                         FontSize="14"
-                                                                        Margin="5"
+                                                                       
                                                                         BorderThickness="0" 
                                                                         FontFamily="Segoe UI"               
                                                                         VerticalAlignment="Center">
-                                        
+
                                     </customcontrols:BindablePasswordBox>
-     
+
                                     <!-- Di gumagana for some reason needed for later debugging -->
                                     <Border.Style>
                                         <Style TargetType="Border">
@@ -448,7 +465,7 @@
                                         Width="330"
                                         Margin="15,20,15,0"
                                         Style="{StaticResource SignInButton}"
-                                        Command="{Binding LoginCommand}"/> 
+                                        Command="{Binding LoginCommand}"/>
 
 
 
